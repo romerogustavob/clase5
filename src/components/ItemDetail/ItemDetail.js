@@ -36,10 +36,10 @@ const ItemDetail = ({item}) => {
       { loading ? 
         <Loader/> :
         <div>
-          <h2>{item.title}</h2>     
-          <img src={item.images}/>
-          <h5>Precio: </h5> <h5>{item.price}</h5>
-          <h5>Descripción:</h5> {item.description}
+          <h2>{item.map(i=>i.title)}</h2>     
+          <img src={item.map(i=>i.images)}/>
+          <h5>Precio: </h5> <h5>{item.map(i=>i.price)}</h5>
+          <h5>Descripción:</h5> {item.map(i=>i.description)}
           <br></br>
             <div className='m-0 row justify-content-center'>
               <div className='col-md-2 col-auto text-center'>

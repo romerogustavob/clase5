@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/esm/Button'
 import { Link, useParams } from 'react-router-dom'
 import ItemList from '../ItemList/ItemList'
-import products from '../Jsons/products'
+//import products from '../Jsons/products'
+import { collection, getDocs, getFiresore, getFirestore, query, where } from "firebase/firestore"
 
 
 const ItemListContainer = () => {
@@ -11,14 +12,16 @@ const ItemListContainer = () => {
   let { categoryid } = useParams()
 
   useEffect(() => {
-    // if (typeof categoryid === 'undefined'){
-    //   setItems(products)
-    //   //window.location.reload(false)
-    // }else{
-    //   setItems(products.filter(p=>p.category==categoryid)); 
-    //   //window.location.reload(false)
-    // }
-    typeof categoryid === 'undefined'? setItems(products) : setItems(products.filter(p=>p.category==categoryid))
+    
+    const db = getFirestore();
+    const itemsCollection = collection(db, "items");
+    getDocs(itemsCollection).then((snapshot)=>{
+      console.log(snapshot.docs.map((doc)=>({id: doc.id, ...doc.data() })))
+      const products = snapshot.docs.map((doc)=>({id: doc.id, ...doc.data() }));
+      
+    typeof categoryid === 'undefined'? setItems(products) : setItems(products.filter(p=>p.categoryId==categoryid))
+      ;
+    })
 
   },[categoryid])
   

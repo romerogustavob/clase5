@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import ItemList from '../ItemList/ItemList'
 import products from '../Jsons/products'
+import { collection, getDocs, getFiresore, getFirestore, query, where } from "firebase/firestore"
+
 
 export const ButtonCount=({total, setTotal})=>{
 const add=()=>{
@@ -36,42 +38,38 @@ const ItemDetailContainer = () => {
   const [total, setTotal] = useState(1) 
   const { id } =useParams()
 
-
   useEffect(() => {
-    getItem().then( data =>{
-      console.log(data)
-      setItem(data)
-    } )
+    
+    // getItem().then( data =>{
+    //   console.log(data)
+    //   setItem(data)
+    // } )
+    const db = getFirestore();
+    const itemsCollection = query(collection(db, "items"), where("id","==",parseInt(id)));
+    getDocs(itemsCollection).then((snapshot)=>{
+      console.log(snapshot.docs.map((doc)=>({id: doc.id, ...doc.data() })))
+      setItem(snapshot.docs.map((doc)=>({id: doc.id, ...doc.data() })))
+      //console.log("ITEM:"+item[id]);
+    })
   
     return () => {
       
     }
   }, [])
   
+ // const getItem = () => {
+    // return new Promise((resolve, reject) => {
+    //    setTimeout(()=>{
+    //       resolve(products[id-1])
+    //    },2000);
+    // })
+  //}
 
-  const getItem = () => {
-    return new Promise((resolve, reject) => {
-       setTimeout(()=>{
-          resolve(products[id-1])
-       },2000);
-    })
-  }
-
-  // const Count=total<5? ButtonCount:InputCount;
 
   return (
     <>
       
       <ItemDetail item={item}/>
-      <div>
-        {/* { total < 5 ? 
-        <ButtonCount total={total} setTotal={setTotal}/> 
-        : 
-        <InputCount total={total} setTotal={setTotal}/>
-         }  */}
-         
-         {/* <Count total={total} setTotal={setTotal}/> */}
-      </div>
      
     </>
     
