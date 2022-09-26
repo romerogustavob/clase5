@@ -2,8 +2,7 @@ import React from "react";
 import { useCartContext } from "../context/CartContext";
 
 export const ListarCarts = () => {
-  const { carts, removeCart, actualizarEstado, clear } =
-    useCartContext();
+  const { carts, removeItem, actualizarEstado, clear } = useCartContext();
 
   return (
     <div>
@@ -11,19 +10,12 @@ export const ListarCarts = () => {
       {carts.length ? (
         carts.map((cart) => (
           <article key={cart.id}>
-            <h3>cart: {cart.titulo}</h3>
-            <h3>Encargadx: {cart.encargado}</h3>
-            <h3>Estado: {cart.estado ? "Realizado" : "Pendiente"}</h3>
+            <h3>titulo: {cart.title}</h3>
+            <h3>descripcion: {cart.description}</h3> 
+            <h3>total: {cart.quantity}</h3>
 
-            <button className="button" onClick={() => removeCart(cart)}>
+            <button className="button" onClick={() => removeItem(cart)}>
               Remover cart
-            </button>
-
-            <button
-              className="button"
-              onClick={() => actualizarEstado(cart, cart.estado)}
-            >
-              Cambiar estado
             </button>
           </article>
         ))
@@ -31,7 +23,7 @@ export const ListarCarts = () => {
         <h3 style={{ margin: "5rem" }}>No hay carts...</h3>
       )}
       {carts.length > 0 && (
-        <button className="button" onClick={removeCart}>
+        <button className="button" onClick={clear}>
           Vaciar lista de carts
         </button>
       )}

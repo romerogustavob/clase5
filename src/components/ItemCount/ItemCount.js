@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
+import { AgregarCart } from '../AgregarCart';
 
-const ItemCount = ( {stock, inicio, addOn}) => {
+const ItemCount = ( {item, stock, inicio}) => {
     const [counter, setCounter]=useState(parseInt(inicio));
     useEffect(() => {  
-        console.log('Efecto al montaje y cambio el counter')
+        console.log('counter en itemcount:'+counter)
         
     }, [counter]);
       
     
     const handleClick=()=>{
+      
       if(parseInt(stock)===counter){
-        alert('stock completo')
-        return
+        alert('stock completo') 
        }else{
-        addOn({counter})
-       }  
         setCounter(counter + 1);
+       }
     }
     
     const handleClickMinus=()=>{
+
       if(0===counter){
         alert('Agregue un producto')
-        return
        } else{
-        addOn({counter})
-       }
         setCounter(counter - 1);
+       }
+
     }
 
   return (
@@ -50,11 +50,11 @@ const ItemCount = ( {stock, inicio, addOn}) => {
                 <Button variant="secondary" size="sm" active onClick={handleClick}>+</Button>
             </td>
         </tr>
-        {/* <tr text-align="center">   
-            <td text-align="center" colSpan={3}>
-                <Button variant="primary"  size="sm" active onClick="">Ir al carrito</Button>
+        <tr text-align="center">   
+            <td text-align="center" colSpan={3}>                    
+            <AgregarCart titulo={item.map(i=>i.title)} descripcion={item.map(i=>i.description)} precio={item.map(i=>i.price)} total={counter}/> 
             </td>
-        </tr> */}
+        </tr>
       </tbody>
     </Table>
     </>

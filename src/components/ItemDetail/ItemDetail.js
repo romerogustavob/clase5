@@ -6,28 +6,23 @@ import darmodeContext from '../../context/darkmode'
 import ItemCount from '../../components/ItemCount/ItemCount'
 import Button from 'react-bootstrap/esm/Button'
 import Loader from '../Loader/Loader'
+import { useCartContext } from "../../context/CartContext";
 
 const ItemDetail = ({item}) => {
-  const [inicio, setInicio]=useState(0)
+  const [inicio, setInicio]=useState(1)
   const [stock, setStock]=useState(6)
   const [loading, setLoading] = useState(true)
-  const [total, setTotal]=useState()
+  const [add, setAdd]=useState(false)
+
+  const { addItem } = useCartContext();
+
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
+
     }, 2000);
   }, [])
-
-  const onAdd=({counter})=>{
-    //(counter)
-    setInicio(1)
-    setStock(6)
-   
-    return()=>{
-      console.log("El total actual es:" +parseInt(counter))
-    }
-  }
 
   return (
     <>
@@ -43,15 +38,18 @@ const ItemDetail = ({item}) => {
           <br></br>
             <div className='m-0 row justify-content-center'>
               <div className='col-md-2 col-auto text-center'>
-                <ItemCount stock={stock} inicio={inicio} addOn={onAdd} />
+                <ItemCount item={item} stock={stock} inicio={inicio}/>
               </div>
             </div>
           
           {/* <button onClick='' className='btn btn-secondary'>Terminar Compra</button> */}
-            <Link to={`/cart/`}>           
+              
+            <Link to={`/cart/`}>            
               <Button variant="secondary" size="sm">Terminar compra</Button>
-            </Link>       
+            </Link>
+            
             </div>
+            
       }  
     </div>
     </>
