@@ -19,9 +19,9 @@ export const CartContextProvider = ({ children }) => {
       }
   
       const id = uuid();
-      const nuevaCart = { ...cart, id };
+      const nuevaCart = { ...cart, id};
       setCarts([...carts, nuevaCart]);
-      Swal.fire("Cart agregada");
+      Swal.fire("Producto agregado");
     };
   
     const removeItem = (cart) => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCartContext } from "../context/CartContext";
 
-export const AgregarCart = ({titulo, descripcion, precio, total }) => {
+export const AgregarCart = ({titulo, descripcion, precio, total}) => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
@@ -14,13 +14,13 @@ export const AgregarCart = ({titulo, descripcion, precio, total }) => {
     setDescription(descripcion);
     setPrice(precio);
     setQuantity(total);
-  }, [])
+    console.log("Agregar Cart: Total: "+quantity)
+  }, [quantity])
   
 
   // Funcion para el formulario
   const onClick = () => {
     // e.preventDefault();
-    setQuantity(total);
 
     setTimeout(() => {
       addItem({ title, description, price, quantity});
@@ -31,7 +31,7 @@ export const AgregarCart = ({titulo, descripcion, precio, total }) => {
   return (
     <>
       <div className="p-3">
-        <input className="button" type="submit" onClick={onClick} value="Agregar cart" />
+        <input className="button" type="submit" onClick={onClick} value="Agregar producto" />
       </div>
        
     </>

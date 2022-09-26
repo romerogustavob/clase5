@@ -7,7 +7,7 @@ const ItemCount = ( {item, stock, inicio}) => {
     const [counter, setCounter]=useState(parseInt(inicio));
     useEffect(() => {  
         console.log('counter en itemcount:'+counter)
-        
+        setCounter(counter)
     }, [counter]);
       
     
@@ -53,6 +53,7 @@ const ItemCount = ( {item, stock, inicio}) => {
         <tr text-align="center">   
             <td text-align="center" colSpan={3}>                    
             <AgregarCart titulo={item.map(i=>i.title)} descripcion={item.map(i=>i.description)} precio={item.map(i=>i.price)} total={counter}/> 
+   
             </td>
         </tr>
       </tbody>

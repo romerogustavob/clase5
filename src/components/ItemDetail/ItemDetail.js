@@ -6,15 +6,15 @@ import darmodeContext from '../../context/darkmode'
 import ItemCount from '../../components/ItemCount/ItemCount'
 import Button from 'react-bootstrap/esm/Button'
 import Loader from '../Loader/Loader'
-import { useCartContext } from "../../context/CartContext";
+import { AgregarCart } from '../AgregarCart'
+import { ListarCarts } from '../ListarCarts'
 
 const ItemDetail = ({item}) => {
   const [inicio, setInicio]=useState(1)
   const [stock, setStock]=useState(6)
   const [loading, setLoading] = useState(true)
+  const [total, setTotal]=useState(1)
   const [add, setAdd]=useState(false)
-
-  const { addItem } = useCartContext();
 
 
   useEffect(() => {
@@ -23,6 +23,14 @@ const ItemDetail = ({item}) => {
 
     }, 2000);
   }, [])
+
+  // const onAdd=({counter})=>{
+  //   //(counter)
+    
+  //   setTotal(counter)
+  //   console.log("El total actual es:"+counter)
+  //   return
+  // }
 
   return (
     <>
@@ -38,7 +46,7 @@ const ItemDetail = ({item}) => {
           <br></br>
             <div className='m-0 row justify-content-center'>
               <div className='col-md-2 col-auto text-center'>
-                <ItemCount item={item} stock={stock} inicio={inicio}/>
+                <ItemCount item={item} stock={stock} inicio={inicio} />
               </div>
             </div>
           

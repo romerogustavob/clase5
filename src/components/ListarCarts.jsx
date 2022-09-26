@@ -2,7 +2,7 @@ import React from "react";
 import { useCartContext } from "../context/CartContext";
 
 export const ListarCarts = () => {
-  const { carts, removeItem, actualizarEstado, clear } = useCartContext();
+  const { carts,quantity, removeItem, actualizarEstado, clear } = useCartContext();
 
   return (
     <div>
@@ -10,10 +10,12 @@ export const ListarCarts = () => {
       {carts.length ? (
         carts.map((cart) => (
           <article key={cart.id}>
-            <h3>titulo: {cart.title}</h3>
-            <h3>descripcion: {cart.description}</h3> 
-            <h3>total: {cart.quantity}</h3>
-
+            <h3>Titulo:</h3>
+            <h4>{cart.title}</h4> 
+            <h3>Precio:</h3>
+            <h4>{cart.price} </h4>
+            <h3>Total:</h3>
+            <h4>{cart.quantity}</h4>
             <button className="button" onClick={() => removeItem(cart)}>
               Remover cart
             </button>
