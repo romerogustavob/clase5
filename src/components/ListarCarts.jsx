@@ -1,33 +1,53 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 
 export const ListarCarts = () => {
-  const { carts,quantity, removeItem, actualizarEstado, clear } = useCartContext();
+  const { carts, removeItem, actualizarEstado, clear } = useCartContext();
 
   return (
-    <div>
+    <div className="container">
 
       {carts.length ? (
         carts.map((cart) => (
-          <article key={cart.id}>
+          <article className="container-sm" key={cart.key}>
+            <div className="">
             <h3>Titulo:</h3>
-            <h4>{cart.title}</h4> 
+            <h4
+            >{cart.title}</h4> 
+            <h3>Total:</h3>
+            <h4>{cart.counter}</h4>
             <h3>Precio:</h3>
             <h4>{cart.price} </h4>
-            <h3>Total:</h3>
-            <h4>{cart.quantity}</h4>
-            <button className="button" onClick={() => removeItem(cart)}>
-              Remover cart
-            </button>
+            
+            <div>
+              <button className="button" onClick={() => removeItem(cart)}>
+                Quitar producto
+              </button> 
+            </div>
+            
+            </div>
           </article>
+          
         ))
       ) : (
-        <h3 style={{ margin: "5rem" }}>No hay carts...</h3>
+        <h3 style={{ margin: "5rem" }}>No hay productos...</h3>
       )}
       {carts.length > 0 && (
-        <button className="button" onClick={clear}>
-          Vaciar lista de carts
-        </button>
+        <div>
+          <div>
+          <button className="button" onClick={clear}>
+            Vaciar lista
+          </button>
+          </div>
+          <div className="">
+          <Link className='btn btn-primary' to={'/'}>
+            <button className="btn btn-primary" type="submit">
+              Home page
+            </button>
+          </Link>
+          </div>
+        </div>
       )}
     </div>
   );
