@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
+import { useCartContext } from '../../context/CartContext';
 import { AgregarCart } from '../AgregarCart';
 
 const ItemCount = ( {item, stock, inicio}) => {
     const [counter, setCounter]=useState(parseInt(inicio));
-    useEffect(() => {  
-        console.log('counter en itemcount:'+counter)
+    const [id, setId]=useState(()=>{return item.map(i=>i.id)})
+    const [title, setTitle] = useState(()=>{return item.map(i=>i.title)});
+    const [description, setDescription] = useState(()=>{return item.map(i=>i.description)});
+    const [price, setPrice] = useState(()=>{return item.map(i=>i.price)});
+
+    useEffect(() => {
+      setId(()=>{return item.map(i=>i.id)})
+      setTitle(()=>{return item.map(i=>i.title)});
+      setDescription(()=>{return item.map(i=>i.description)});
+      setPrice(()=>{return item.map(i=>i.price)});
+  
+        console.log('counter en itemcount:'+counter+"title:"+title)
         setCounter(counter)
     }, [counter]);
+
       
+    const {addItem}=useCartContext()
     
     const handleClick=()=>{
       
@@ -29,6 +42,16 @@ const ItemCount = ( {item, stock, inicio}) => {
        }
 
     }
+
+    const onClick = (evt) => {
+      evt.preventDefault();
+  
+      setTimeout(() => {
+        //return addItem({ item, counter});
+        addItem({ id, title, description, price, counter});
+      }, 1000);
+      
+    };
 
   return (
     <>
@@ -52,8 +75,9 @@ const ItemCount = ( {item, stock, inicio}) => {
         </tr>
         <tr text-align="center">   
             <td text-align="center" colSpan={3}>                    
-            <AgregarCart titulo={item.map(i=>i.title)} descripcion={item.map(i=>i.description)} precio={item.map(i=>i.price)} total={counter}/> 
-   
+              <div className="p-3">
+                <input className="button" type="submit" onClick={onClick} value="Agregar producto" />
+              </div>
             </td>
         </tr>
       </tbody>

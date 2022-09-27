@@ -5,7 +5,7 @@ export const AgregarCart = ({titulo, descripcion, precio, total}) => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
-  const [quantity, setQuantity] = useState();
+  const [quantity, setQuantity] = useState(1);
 
   const { addItem } = useCartContext();
 

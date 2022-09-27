@@ -8,9 +8,10 @@ export const useCartContext=()=>useContext(CartContext);
 
 export const CartContextProvider = ({ children }) => {
     const [carts, setCarts] = useState([]);
+
   
     const isInCart = (cart) => {
-      return carts.some((buscada) => buscada.title === cart.title);
+      return carts.some((buscada) => buscada.id === cart.id);
     };
   
     const addItem = (cart) => {
@@ -18,8 +19,8 @@ export const CartContextProvider = ({ children }) => {
         return Swal.fire("Ya existe en la lista");
       }
   
-      const id = uuid();
-      const nuevaCart = { ...cart, id};
+      const key = uuid();
+      const nuevaCart = { ...cart, key};
       setCarts([...carts, nuevaCart]);
       Swal.fire("Producto agregado");
     };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { Children, useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Item from '../Item/Item'
@@ -46,7 +46,8 @@ const ItemDetail = ({item}) => {
           <br></br>
             <div className='m-0 row justify-content-center'>
               <div className='col-md-2 col-auto text-center'>
-                <ItemCount item={item} stock={stock} inicio={inicio} />
+                <ItemCount item={item} stock={stock} inicio={inicio}/>
+             
               </div>
             </div>
           
