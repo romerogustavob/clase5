@@ -9,16 +9,22 @@ export const ListarCarts = () => {
     <div className="container">
 
       {carts.length ? (
+        
         carts.map((cart) => (
+          
           <article className="container-sm" key={cart.key}>
+            {console.log(cart)}
+            {console.log(cart.item.map(i=>i.title))}
+
             <div className="">
             <h3>Titulo:</h3>
             <h4
-            >{cart.title}</h4> 
+            >{cart.item.map(i=>i.title)}</h4> 
+            
+            <h3>Precio:</h3>
+            <h4>{cart.item.map(i=>i.price)} </h4>
             <h3>Total:</h3>
             <h4>{cart.counter}</h4>
-            <h3>Precio:</h3>
-            <h4>{cart.price} </h4>
             
             <div>
               <button className="button" onClick={() => removeItem(cart)}>
