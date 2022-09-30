@@ -11,6 +11,8 @@ import Cart from './components/Cart/Cart'
 import { ListarCarts } from "./components/ListarCarts";
 import { AgregarCarts } from "./components/AgregarCart";
 import { CartContextProvider } from './context/CartContext';
+import CartWidget from './components/LogoWidget';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 

@@ -24,14 +24,6 @@ const ItemDetail = ({item}) => {
     }, 2000);
   }, [])
 
-  // const onAdd=({counter})=>{
-  //   //(counter)
-    
-  //   setTotal(counter)
-  //   console.log("El total actual es:"+counter)
-  //   return
-  // }
-
   return (
     <>
      

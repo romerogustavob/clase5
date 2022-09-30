@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import CartWidgetFooter from '../CartWidgetFooter';
+import LogoWidgetFooter from '../LogoWidgetFooter';
 
 export const DarkModeButton=()=>{
   return(
@@ -18,7 +18,7 @@ const PiePagina = () => {
       
       <Navbar  bg="dark" variant="dark">
         <Container>    
-          <CartWidgetFooter></CartWidgetFooter>
+          <LogoWidgetFooter></LogoWidgetFooter>
           <Navbar.Brand href="#home">Gus Store - All rights reserved</Navbar.Brand>
           {/* <DarkModeButton/> */}
           <Nav className="me-auto">

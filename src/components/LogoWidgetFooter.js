@@ -1,7 +1,7 @@
 import React from 'react';
 import { Bluetooth } from 'react-bootstrap-icons';
 
-const CartWidget = () => {
+const LogoWidget = () => {
   return (
     <>
     <Bluetooth color="royalblue" size={30} />
@@ -10,4 +10,4 @@ const CartWidget = () => {
   )
 }
 
-export default CartWidget
+export default LogoWidget
