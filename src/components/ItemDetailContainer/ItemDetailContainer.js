@@ -40,16 +40,11 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     
-    // getItem().then( data =>{
-    //   console.log(data)
-    //   setItem(data)
-    // } )
     const db = getFirestore();
     const itemsCollection = query(collection(db, "items"), where("id","==",parseInt(id)));
     getDocs(itemsCollection).then((snapshot)=>{
       console.log(snapshot.docs.map((doc)=>({id: doc.id, ...doc.data() })))
       setItem(snapshot.docs.map((doc)=>({id: doc.id, ...doc.data() })))
-      //console.log("ITEM:"+item[id]);
     })
   
     return () => {
@@ -57,15 +52,6 @@ const ItemDetailContainer = () => {
     }
   }, [])
   
- // const getItem = () => {
-    // return new Promise((resolve, reject) => {
-    //    setTimeout(()=>{
-    //       resolve(products[id-1])
-    //    },2000);
-    // })
-  //}
-
-
   return (
     <>
       

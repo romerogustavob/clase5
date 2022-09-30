@@ -38,7 +38,6 @@ const ItemCount = ( {item, stock, inicio}) => {
   
       setTimeout(() => {
         addItem({ item, counter});
-       // addItem({ id, title, description, price, counter});
       }, 1000);
       
     };

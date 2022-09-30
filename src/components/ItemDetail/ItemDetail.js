@@ -43,8 +43,6 @@ const ItemDetail = ({item}) => {
               </div>
             </div>
           
-          {/* <button onClick='' className='btn btn-secondary'>Terminar Compra</button> */}
-              
             <Link to={`/cart/`}>            
               <Button variant="secondary" size="sm">Terminar compra</Button>
             </Link>

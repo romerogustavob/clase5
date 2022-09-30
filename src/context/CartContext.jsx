@@ -9,8 +9,7 @@ export const useCartContext=()=>useContext(CartContext);
 export const CartContextProvider = ({ children }) => {
     const [carts, setCarts] = useState([]);
     const[totalCarts, setTotalCarts]=useState(0);
- 
-  
+
     const isInCart = (cart) => {
       const idcart=cart.item.map(i=>i.id)[0];
       const elemenexiste=carts.some((ca)=>ca.item.find(i=>i.id===idcart));
@@ -46,8 +45,6 @@ export const CartContextProvider = ({ children }) => {
     };
   
     const removeItem = (cart) => {
-      //carts.some((ca)=>ca.item.find(i=>i.id===idcart));
-
       //const removerTarea = tareas.filter((buscada) => buscada.id !== tarea.id);
       const idcart=cart.item.map(i=>i.id)[0];
       const removerItem = carts.filter((ca)=>ca.item.find(i=>i.id!==idcart))
