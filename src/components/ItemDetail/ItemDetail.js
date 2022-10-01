@@ -2,12 +2,9 @@ import React, { Children, useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Item from '../Item/Item'
-import darmodeContext from '../../context/darkmode'
 import ItemCount from '../../components/ItemCount/ItemCount'
 import Button from 'react-bootstrap/esm/Button'
 import Loader from '../Loader/Loader'
-import { AgregarCart } from '../AgregarCart'
-import { ListarCarts } from '../ListarCarts'
 
 const ItemDetail = ({item}) => {
   const [inicio, setInicio]=useState(1)

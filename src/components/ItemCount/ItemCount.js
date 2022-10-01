@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import { useCartContext } from '../../context/CartContext';
-import { AgregarCart } from '../AgregarCart';
 
 const ItemCount = ( {item, stock, inicio}) => {
     const [counter, setCounter]=useState(parseInt(inicio));

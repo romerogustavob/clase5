@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
-import ItemList from '../ItemList/ItemList'
-import products from '../Jsons/products'
-import { collection, getDocs, getFiresore, getFirestore, query, where } from "firebase/firestore"
 
+import { collection, getDocs, getFiresore, getFirestore, query, where } from "firebase/firestore"
 
 export const ButtonCount=({total, setTotal})=>{
 const add=()=>{
